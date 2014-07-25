@@ -6,37 +6,54 @@ var Validator = {
 		console.log(val);
 		if(val.length && val !== '')
 			return true;
+		console.log('name');
 		return false;
 	},
 	email: function(val){
 		var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 		if (filter.test(val))
 			return true;
+		console.log('email');
 		return false;
 	},
 	password: function(val){
 		if (val.length >= 6)
 			return true;
+		console.log('pass');
 		return false;
 	}
 }
 
 if (Meteor.isClient) {
+	Meteor.startup(function(){
+		Deps.autorun(function(){
+			if(Meteor.userId()){
+				console.log(iouUsers.find().fetch());
+				console.log(Meteor.users.find().fetch());
+			}
+		});
+	});
 
 	Template.signOut.name = function(){
 		return Meteor.user().profile.name;
 	}
 	Template.addUser.users = function(){
-		return iouUsers.find({}, {sort: {username: 1}});
+		// return iouUsers.find({}, {sort: {username: 1}});
+		console.log(Meteor.users.find({}, {sort: {username: 1}}).fetch());
+		return Meteor.users.find({}, {sort: {name: 1}});
 	}
 	Template.deleteUser.username = function(){
 		return this.username;
 	}
 	Template.iouForm.users = function(){
-		return iouUsers.find({}, {sort: {username: 1}});
+		// return iouUsers.find({}, {sort: {username: 1}});
+		console.log(Meteor.users.find({}, {sort: {username: 1}}).fetch());
+		return Meteor.users.find({}, {sort: {name: 1}});
 	}
 	Template.iouTables.users = function(){
-		return iouUsers.find({}, {sort: {username: 1}});
+		// return iouUsers.find({}, {sort: {username: 1}});
+		console.log(Meteor.users.find({}, {sort: {username: 1}}).fetch());
+		return Meteor.users.find({}, {sort: {name: 1}});
 	}
 	Template.iouTable.user = function(){
 		return this;
@@ -53,7 +70,8 @@ if (Meteor.isClient) {
 	}
 
 	var getUsername = function(id){
-		var oUser = iouUsers.findOne({_id: id});
+		// var oUser = iouUsers.findOne({_id: id});
+		var oUser = Meteor.users.findOne({_id: id});
 
 		return oUser.username;
 	}
@@ -92,7 +110,7 @@ if (Meteor.isClient) {
 				confirmPassword	= $('#signUpForm-password-confirm').val();
 
 			if(Validator.nonEmptyString(name) && Validator.email(email) && Validator.password(password) && password === confirmPassword){
-				Accounts.createUser({email: email, password: password, profile: {name: name} }, function(error){
+				Accounts.createUser({email: email, password: password, username: name, createdAt: new Date().getTime(), profile: {name: name} }, function(error){
 					if(error){
 						console.log(error);
 						if(error.message === "Email already exists. [403]"){
@@ -114,18 +132,18 @@ if (Meteor.isClient) {
 		}
 	});
 
-	Template.addUser.events({
-		'click #addUser-submit' : function(){
-			if($('#addUser-input').val()){
-				var uid = iouUsers.insert({username:$('#addUser-input').val()});
-			}
-		}
-	});
-	Template.deleteUser.events({
-		'click p span' : function(){
-			iouUsers.remove(this._id);
-		}
-	});
+	// Template.addUser.events({
+	// 	'click #addUser-submit' : function(){
+	// 		if($('#addUser-input').val()){
+	// 			var uid = iouUsers.insert({username:$('#addUser-input').val()});
+	// 		}
+	// 	}
+	// });
+	// Template.deleteUser.events({
+	// 	'click p span' : function(){
+	// 		iouUsers.remove(this._id);
+	// 	}
+	// });
 
 	Template.iouForm.events({
 		'click #iouForm-submit': function(){
@@ -133,20 +151,10 @@ if (Meteor.isClient) {
 				debt = {
 					amount: $('#iouForm-amount').val(),
 					paid: false,
-					desc: $('#iouForm-description').val()
+					desc: $('#iouForm-description').val(),
+					user_id: $('#iouForm-user-select-primary').val(),
+					iou_id: $('#iouForm-user-select-secondary').val()
 				};
-
-			// TODO remove this unneeded feature
-			switch(method){
-				case 'owes':
-					debt.user_id = $('#iouForm-user-select-primary').val();
-					debt.iou_id = $('#iouForm-user-select-secondary').val();
-				break;
-				case 'owedby':
-					debt.user_id = $('#iouForm-user-select-secondary').val();
-					debt.iou_id = $('#iouForm-user-select-primary').val();
-				break;
-			}
 
 			// TODO if both user and iou id's are "all" or the same id then error, because dumb
 			if(debt.user_id == debt.iou_id){
@@ -154,15 +162,19 @@ if (Meteor.isClient) {
 			}
 
 			if(debt.user_id == 'all'){
-				iouUsers.find().forEach(function(user){
+				// iouUsers.find().forEach(function(user){
+				Meteor.users.find().forEach(function(user){
 					if(user._id !== debt.iou_id){
+						console.log(user);
 						debt.user_id = user._id;
 						iouDebts.insert(debt);
 					}
 				});
 			}else if(debt.iou_id == 'all'){
-				iouUsers.find().forEach(function(user){
+				// iouUsers.find().forEach(function(user){
+				Meteor.users.find().forEach(function(user){
 					if(user._id !== debt.user_id){
+						console.log(user);
 						debt.iou_id = user._id;
 						iouDebts.insert(debt);
 					}

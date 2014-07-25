@@ -16,50 +16,56 @@
 /* close commented backslash hack */
 
 body{
-	font-size:16px;
+	/*font-size:16px;*/
 	margin:0;
 	font-family:Arial, sans-serif;
 	color:#333;
 }
 .content-container{
-	max-width:920px;
-	width:96%;
-	margin:2em auto 0;
+	max-width:1200px;
+	/*width:96%;*/
+	margin:2em auto;
+}
+.pure-g > div{
+	padding:0.4em 1em;
 }
 hr{
 	border:none;
 	border-bottom:1px solid #ccc;
 }
 input, select{
-	width:10em;
+	width:100%;
 	padding:0.4em;
 	font-size:0.8em;
 	border-radius:3px;
 	border:1px solid #ccc;
 }
-h1{
+.iou h1{
 	font-size:4em;
 	font-weight:bold;
 	color:#4B6AA5;
 	letter-spacing:-0.15em;
 	margin:0.2em 0;
 }
+.iou h2{
+	margin:0;
+}
 #iouForm-description{
 }
-#iouForm-submit{
+/*#iouForm-submit{*/
+.iouButton{
 	color:#fff;
 	text-align:center;
 	font-weight:bold;
+	cursor:pointer;
 	background-color:#63B647;
 	border-radius:3px;
-	width:10em;
+	/*width:10em;*/
+	width:100%;
 	padding:0.4em;
-	margin:0.4em 0;
 }
 .iouTable{
-	width:30%;
-	margin:1.66%;
-	float:left;
+	padding:1em;
 }
 .iouTable h3{
 	border-bottom:1px solid #ccc;
@@ -86,8 +92,34 @@ h1{
 	font-weight:bold;
 	float:right;
 }
+.iouForm p{
+	font-size:1.6em;
+	color:#999;
+	text-align: center;
+	margin:0;
+	border-bottom:1px solid #ddd;
+}
+.iouSignOut{
+	float:right;
+	margin-top:3.4em;
+}
+#signOut-logout{
+	font-style: italic;
+	color:#999;
+	cursor:pointer;
+}
+#signOut-logout:hover{
+	text-decoration: underline;
+}
+.iouHeader{
+	display:inline;
+	float:left;
+}
+#signInForm-submit{
+}
 
-@media all and (min-width: 920px){
+
+/*@media all and (min-width: 920px){
 	.iouForm p{
 		display:inline;
 		margin:0 0.4em;
@@ -111,4 +143,4 @@ h1{
 	.iouForm p{
 		text-align:center;
 	}
-}
+}*/
