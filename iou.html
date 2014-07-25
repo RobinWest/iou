@@ -1,0 +1,129 @@
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>iou</title>
+</head>
+
+<body>
+	<div class="content-container">
+		<h1>iou</h1>
+		<hr>
+		{{> iouTables}}
+		<hr>
+		{{> iouForm}}
+		<!-- <h3>Add a user</h3>
+		{{> addUser}} -->
+
+		{{#if resetPassword}}
+			{{> resetPassword}}
+		{{else}}
+			{{#if currentUser}}
+				{{> signOut}}
+			{{else}}
+				{{#if showForgotPassword}}
+					{{> passwordReset}}
+				{{else}}
+					{{> signInForm}}
+					<hr>
+					{{> signUpForm}}
+				{{/if}}
+			{{/if}}
+		{{/if}}
+	</div>
+</body>
+
+<template name="passwordReset">
+	
+</template>
+
+<template name="resetPassword">
+	
+</template>
+
+<template name="signOut">
+	Hello, {{name}}
+	<div id="signOut-logout">Logout</div>
+</template>
+
+<template name="signInForm">
+	<h2>Sign in</h2>
+	<input type="text" placeholder="email" id="signInForm-email">
+	<input type="password" placeholder="password" id="signInForm-password">
+	<div id="signInForm-submit">Sign in</div>
+</template>
+
+<template name="signUpForm">
+	<h3>or sign up</h3>
+	<input type="text" placeholder="name" id="signUpForm-name">
+	<input type="text" placeholder="email" id="signUpForm-email">
+	<input type="password" placeholder="password" id="signUpForm-password">
+	<input type="password" placeholder="confirm password" id="signUpForm-password-confirm">
+	<div id="signUpForm-submit">Sign up</div>
+</template>
+
+<template name="addUser">
+	<input id="addUser-input" type="text">
+	<div id="addUser-submit">Add user</div>
+	{{#each users}}
+		{{> deleteUser}}
+	{{/each}}
+</template>
+
+<template name="deleteUser">
+	<p>{{username}} <span>delete</span></p>
+</template>
+
+<template name="iouForm">
+	<div class="iouForm">
+		<select name="" id="iouForm-user-select-primary">
+		{{#each users}}
+			<option value="{{_id}}">{{username}}</option>
+		{{/each}}
+			<option value="all">Everyone</option>
+		</select>
+		
+		<!-- <select name="" id="iouForm-select-method">
+			<option value="owes">owes</option>
+			<option value="owedby">is owed by</option>
+		</select> -->
+		
+		<p>owes</p>
+		
+		<select name="" id="iouForm-user-select-secondary">
+		{{#each users}}
+			<option value="{{_id}}">{{username}}</option>
+		{{/each}}
+			<option value="all">Everyone</option>
+		</select>
+		
+		<input type="text" id="iouForm-amount" placeholder="amount">
+		
+		<input type="text" id="iouForm-description" placeholder="description...">
+		
+		<div id="iouForm-submit">Add IOU</div>
+	</div>
+</template>
+
+<template name="iouTables">
+	<div class="iouTables clearfix">
+		{{#each users}}
+			{{> iouTable}}
+		{{/each}}
+	</div>
+</template>
+
+<template name="iouTable">
+	<div class="iouTable">
+		<h3>{{user.username}}</h3>
+		{{#each debts}}
+			{{> iouDebt}}
+		{{/each}}
+	</div>
+</template>
+
+<template name="iouDebt">
+	<div class="iouDebt {{#if paid}}paid{{/if}}">
+		<span class="iouDebt-clear">x</span>
+		<p><strong>{{this.username}}</strong> owes <strong>{{this.iouname}}</strong> £{{this.amount}}</p>
+		<span>{{desc}}</span>
+	</div>
+</template>

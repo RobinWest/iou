@@ -1,0 +1,114 @@
+*, *:before, *:after {
+  -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+ }
+.clearfix:after {
+     visibility: hidden;
+     display: block;
+     font-size: 0;
+     content: " ";
+     clear: both;
+     height: 0;
+     }
+.clearfix { display: inline-block; }
+/* start commented backslash hack \*/
+* html .clearfix { height: 1%; }
+.clearfix { display: block; }
+/* close commented backslash hack */
+
+body{
+	font-size:16px;
+	margin:0;
+	font-family:Arial, sans-serif;
+	color:#333;
+}
+.content-container{
+	max-width:920px;
+	width:96%;
+	margin:2em auto 0;
+}
+hr{
+	border:none;
+	border-bottom:1px solid #ccc;
+}
+input, select{
+	width:10em;
+	padding:0.4em;
+	font-size:0.8em;
+	border-radius:3px;
+	border:1px solid #ccc;
+}
+h1{
+	font-size:4em;
+	font-weight:bold;
+	color:#4B6AA5;
+	letter-spacing:-0.15em;
+	margin:0.2em 0;
+}
+#iouForm-description{
+}
+#iouForm-submit{
+	color:#fff;
+	text-align:center;
+	font-weight:bold;
+	background-color:#63B647;
+	border-radius:3px;
+	width:10em;
+	padding:0.4em;
+	margin:0.4em 0;
+}
+.iouTable{
+	width:30%;
+	margin:1.66%;
+	float:left;
+}
+.iouTable h3{
+	border-bottom:1px solid #ccc;
+}
+.iouDebt{
+	border-left:1px solid #ddd;
+	margin:0 0.4em 1em;
+	padding: 0 0 0 0.4em;
+}
+.iouDebt.paid{
+	color:#ddd;
+}
+.iouDebt.paid span{
+	color:#ddd;
+}
+.iouDebt p{
+	margin:0 0 0.2em;
+}
+.iouDebt span{
+	color:#999;
+}
+.iouDebt-clear{
+	cursor:pointer;
+	font-weight:bold;
+	float:right;
+}
+
+@media all and (min-width: 920px){
+	.iouForm p{
+		display:inline;
+		margin:0 0.4em;
+	}
+}
+@media all and (min-width: 641px) and (max-width: 919px){
+	
+}
+@media all and (max-width: 640px){
+	body{
+		font-size:20px;
+	}
+	input, select{
+		width:100%;
+		padding:0.6em;
+		margin:0.4em 0;
+	}
+	.iouTable{
+		width:96%;
+	}
+	.iouForm p{
+		text-align:center;
+	}
+}
