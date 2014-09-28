@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg viewBox="0 0 17 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.0.4 (8054) - http://www.bohemiancoding.com/sketch -->
+    <title>exit</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="phone" sketch:type="MSLayerGroup" transform="translate(-352.000000, -87.000000)" fill="#DC7070">
+            <g id="add-user" transform="translate(20.000000, 74.000000)" sketch:type="MSShapeGroup">
+                <g id="toolbar">
+                    <path d="M342,19 L348.009205,19 C349.101788,19 350,19.8954305 350,21 C350,22.1122704 349.108691,23 348.009205,23 L342,23 L342,29.0092049 C342,30.1017876 341.104569,31 340,31 C338.88773,31 338,30.1086907 338,29.0092049 L338,23 L331.990795,23 C330.898212,23 330,22.1045695 330,21 C330,19.8877296 330.891309,19 331.990795,19 L338,19 L338,12.9907951 C338,11.8982124 338.895431,11 340,11 C341.11227,11 342,11.8913093 342,12.9907951 L342,19 Z" id="exit" transform="translate(340.000000, 21.000000) rotate(-315.000000) translate(-340.000000, -21.000000) "></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

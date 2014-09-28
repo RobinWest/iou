@@ -1,42 +1,15 @@
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>iou</title>
-</head>
-
-<body>
-	<div class="content-container">
-		{{> iouAddDebt}}
-	</div>
-</body>
-
-<template name="iouAddDebt">
-	<div class="container debt">
-		{{> iouTopBar}}
-		{{> iouAddUser}}
-	</div>
-</template>
-<template name="iouTopBar">
-	<div class="pure-g container top-bar">
-		<div class="pure-u-1">
-			<div class="icon close">
-				<embed src="img/icon-cross.svg" type="image/svg+xml">
-			</div>
-		</div>
-	</div>
-</template>
-<template name="iouAddUser">
-	<div class="pure-g container add-user">
-		<div class="pure-u-1">
-			<a href="#!/add/user">add user</a>
-			<div class="icon add cancel">
-				{{> svgAddUser}}
-			</div>
-		</div>
-	</div>
-</template>
-
-<template name="svgAddUser">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg viewBox="0 0 23 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+<style>
+#add-user.cancel path{
+    fill:red;
+    -webkit-transform:rotate(45deg);
+}
+</style>
+    <!-- Generator: Sketch 3.0.4 (8054) - http://www.bohemiancoding.com/sketch -->
+    <title>Rectangle 2</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
         <g id="phone-2" sketch:type="MSLayerGroup" transform="translate(-188.000000, -204.000000)" fill="#79B578">
             <g id="add-user" transform="translate(20.000000, 74.000000)" sketch:type="MSShapeGroup">
@@ -49,4 +22,3 @@
         </g>
     </g>
 </svg>
-</template>

@@ -18,129 +18,97 @@
 body{
 	/*font-size:16px;*/
 	margin:0;
+	padding:0;
 	font-family:Arial, sans-serif;
 	color:#333;
 }
 .content-container{
-	max-width:1200px;
-	/*width:96%;*/
-	margin:2em auto;
+
 }
+
 .pure-g > div{
-	padding:0.4em 1em;
+	padding:1.4em 2em;
 }
-hr{
-	border:none;
-	border-bottom:1px solid #ccc;
+
+/* Colors
+Red: 		#DC7070;
+Pale red: 	#EAA9A9;
+Green: 		#79B578;
+Blue: 		#53B2F4;
+Grey: 		#CCCCCC;
+Coal:		#444444;
+*/
+
+.container.debt{
+	position:absolute;
+	background-color:#DC7070;
+	min-height:100%;
+	min-width:100%;
 }
-input, select{
-	width:100%;
-	padding:0.4em;
-	font-size:0.8em;
-	border-radius:3px;
-	border:1px solid #ccc;
+
+/* iouTopBar */
+.container.top-bar{
+	background-color:#fff;
 }
-.iou h1{
-	font-size:4em;
-	font-weight:bold;
-	color:#4B6AA5;
-	letter-spacing:-0.15em;
-	margin:0.2em 0;
+.top-bar .icon.close{
+	float:right;
 }
-.iou h2{
-	margin:0;
+.top-bar{
+	-webkit-animation: slide 2s;
+	animation: slide 2s;
 }
-#iouForm-description{
+@keyframes slide{
+	0%{
+		background-color:#fff;
+		transform: translateX(-1000px);
+	}
+	100%{
+		background-color:#333;
+		transform: translateX(0);
+	}
 }
-/*#iouForm-submit{*/
-.iouButton{
-	color:#fff;
+
+/* iouAddUser */
+.container.add-user{
+	margin:3em 2em 0;
+}
+.add-user a{
+	display:block;
 	text-align:center;
-	font-weight:bold;
-	cursor:pointer;
-	background-color:#63B647;
-	border-radius:3px;
-	/*width:10em;*/
+	color:#EAA9A9;
+	text-decoration:none;
+	font-style:italic;
+}
+.add-user .icon.cancel,
+.add-user .icon.add{
+	background-color:#fff;
+	border-radius:100%;
+	padding:0.8em;
+	margin:1em auto 0;
+	width:3.2em;
+	height:3.2em;
+}
+.add-user .icon.cancel svg path{
+	fill:#DC7070;
+	-webkit-animation: cancel 1s linear;
+	animation: cancel 1s linear;
+	-webkit-transform-origin:50% 50%;
+	-ms-transform-origin:50% 50%;
+	transform-origin:50% 50%;
+}
+@keyframes cancel {
+    100% {
+		-webkit-transform:rotate(45deg);
+		-ms-transform:rotate(45deg);
+		transform:rotate(45deg);
+    }
+}
+
+/* icons */
+.icon{
+	width:2em;
+	height:2em;
+}
+.icon embed{
 	width:100%;
-	padding:0.4em;
 }
-.iouTable{
-	padding:1em;
-}
-.iouTable h3{
-	border-bottom:1px solid #ccc;
-}
-.iouDebt{
-	border-left:1px solid #ddd;
-	margin:0 0.4em 1em;
-	padding: 0 0 0 0.4em;
-}
-.iouDebt.paid{
-	color:#ddd;
-}
-.iouDebt.paid span{
-	color:#ddd;
-}
-.iouDebt p{
-	margin:0 0 0.2em;
-}
-.iouDebt span{
-	color:#999;
-}
-.iouDebt-clear{
-	cursor:pointer;
-	font-weight:bold;
-	float:right;
-}
-.iouForm p{
-	font-size:1.6em;
-	color:#999;
-	text-align: center;
-	margin:0;
-	border-bottom:1px solid #ddd;
-}
-.iouSignOut{
-	float:right;
-	margin-top:3.4em;
-}
-#signOut-logout{
-	font-style: italic;
-	color:#999;
-	cursor:pointer;
-}
-#signOut-logout:hover{
-	text-decoration: underline;
-}
-.iouHeader{
-	display:inline;
-	float:left;
-}
-#signInForm-submit{
-}
-
-
-/*@media all and (min-width: 920px){
-	.iouForm p{
-		display:inline;
-		margin:0 0.4em;
-	}
-}
-@media all and (min-width: 641px) and (max-width: 919px){
-	
-}
-@media all and (max-width: 640px){
-	body{
-		font-size:20px;
-	}
-	input, select{
-		width:100%;
-		padding:0.6em;
-		margin:0.4em 0;
-	}
-	.iouTable{
-		width:96%;
-	}
-	.iouForm p{
-		text-align:center;
-	}
-}*/
